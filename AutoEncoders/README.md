@@ -15,6 +15,11 @@ autoencoders dont really work for generation. heres why:
 - but if you give it a random vector, the reconstruction is soo bad.
 - even a vector thats *close* to one of the encoded points still doesnt reconstruct properly.
 - so the latent space only "works" at the exact points the encoder mapped during training. everywhere else is broken.
+
+### Random Point Reconstruction Image : 
+
+![alt text](images/random_point_reconstruction.png)
+
 ## why this actually happens (refinement)
  
 the real reason is that the latent space is not regularized. during training, the AE only optimizes reconstruction loss, so the encoder has zero incentive to organize the latent space in any meaningful way.
@@ -39,6 +44,7 @@ the encoder part is genuinely useful, just not for generation:
 Here, we code audo encoders from scratch
 our results: 
 ![!\[alt text\](reconstruction_results.png)](images/reconstruction_results.png)
+
 
 
 ## next up: VAE
