@@ -6,7 +6,7 @@
 basically an architecture with two parts: encoder and decoder. the encoder compresses the input down into a small latent space (compressed representation), and the decoder takes that latent vector and tries to reconstruct the original input from it.
  
  ![alt text](images/image.png)
- 
+
 ## the main problem
  
 autoencoders dont really work for generation. heres why:
@@ -35,6 +35,12 @@ the encoder part is genuinely useful, just not for generation:
 - **denoising** (denoising autoencoders)
 - **anomaly detection** (high reconstruction error = probably out of distribution)
 - **feature learning** for downstream tasks
+
+Here, we code audo encoders from scratch
+our results: 
+![!\[alt text\](reconstruction_results.png)](images/reconstruction_results.png)
+
+
 ## next up: VAE
  
 quick teaser for what fixes this. VAEs:
@@ -45,6 +51,3 @@ quick teaser for what fixes this. VAEs:
 thats the whole trick. regularization of the latent space.
 
 
-Here, we code audo encoders from scratch
-our results: 
-![!\[alt text\](reconstruction_results.png)](images/reconstruction_results.png)
