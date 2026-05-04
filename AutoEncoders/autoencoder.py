@@ -112,3 +112,25 @@ with torch.no_grad():
     # Display the plot
     plt.show()
     
+# plotting out a random point 
+model.eval()
+
+with torch.no_grad():
+    # 1. Sample 5 random points from the latent space
+    # NOTE: These values don't follow a N(0, 1) distribution, 
+    # so the results will likely be visual noise.
+    z = torch.randn(5, 32).to(device) 
+    
+    # 2. Decode the points
+    generated_images = model.decoder(z)
+    
+    # 3. Reshape and plot
+    generated_images = generated_images.view(-1, 1, 28, 28).cpu()
+    
+    fig, axes = plt.subplots(1, 5, figsize=(15, 3))
+    for i in range(5):
+        axes[i].imshow(generated_images[i].squeeze(), cmap='gray')
+        axes[i].axis('off')
+        axes[i].set_title(f"Random Sample {i+1}")
+    plt.tight_layout()
+    plt.show()
